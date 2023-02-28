@@ -1,0 +1,104 @@
+{
+  "name": "remote-tools",
+  "displayName": "Remote Tools",
+  "description": "",
+  "version": "0.0.1",
+  "engines": {
+    "vscode": "^1.74.3"
+  },
+  "categories": [
+    "Other"
+  ],
+  "main": "./out/extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "RemoteTools.executeSasCode",
+        "title": "Remote Executer: Execute Sas Code"
+      },
+      {
+        "command": "RemoteTools.viewFiveHundredSas",
+        "title": "Remote Executer: View 500 rows SAS"
+      },
+      {
+        "command": "RemoteTools.viewAllSas",
+        "title": "Remote Executer: View all rows SAS"
+      },
+      {
+        "command": "RemoteTools.queryBigQuery",
+        "title": "Remote Executer: Query Big Query"
+      }
+    ],
+    "keybindings": [
+        {
+            "command": "RemoteTools.executeSasCode",
+            "key": "ctrl+f5"
+        },
+        {
+            "command": "RemoteTools.viewFiveHundredSas",
+            "key": "ctrl+f6"
+        },
+        {
+          "command": "RemoteTools.viewAllSas",
+          "key": "ctrl+f7"
+        },
+        {
+          "command": "RemoteTools.queryBigQuery",
+          "key": "ctrl+f8"
+        }
+    ],
+    "configuration": {
+      "title": "RemoteTools",
+      "properties": {
+        "RemoteSAS.host": {
+          "type": "string",
+          "default": ""
+        },
+        "RemoteSAS.port": {
+          "type": "number",
+          "default": 22
+        },
+        "RemoteSAS.username": {
+          "type": "string",
+          "default": ""
+        },
+        "RemoteSAS.password": {
+          "type": "string",
+          "default": ""
+        },
+        "RemoteSAS.noterminal": {
+          "type": "boolean",
+          "default": false,
+          "description": "-noterminal stops SAS from attempting to connect to the X server with using proc export.\n However, there is a side effect in that if there is an error in a data proc it is unable to recover until SAS is restarted."
+        }
+      }
+    }
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run compile",
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./",
+    "pretest": "npm run compile && npm run lint",
+    "lint": "eslint src --ext ts",
+    "test": "node ./out/test/runTest.js"
+  },
+  "devDependencies": {
+    "@fast-csv/format": "^4.3.5",
+    "@google-cloud/bigquery": "^6.1.0",
+    "@types/glob": "^8.0.1",
+    "@types/mocha": "^10.0.1",
+    "@types/node": "16.x",
+    "@types/ssh2": "^1.11.0",
+    "@types/vscode": "^1.69.1",
+    "@typescript-eslint/eslint-plugin": "^5.49.0",
+    "@typescript-eslint/parser": "^5.49.0",
+    "@vscode/test-electron": "^2.2.2",
+    "date-format": "^4.0.14",
+    "eslint": "^8.33.0",
+    "glob": "^8.1.0",
+    "mocha": "^10.1.0",
+    "prettier": "2.8.4",
+    "ssh2": "^1.11.0",
+    "typescript": "^4.9.4"
+  }
+}
