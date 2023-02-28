@@ -2,7 +2,7 @@
   "name": "remote-tools",
   "displayName": "Remote Tools",
   "description": "",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "engines": {
     "vscode": "^1.74.3"
   },
@@ -35,22 +35,22 @@
       }
     ],
     "keybindings": [
-        {
-            "command": "RemoteTools.executeSasCode",
-            "key": "ctrl+f5"
-        },
-        {
-            "command": "RemoteTools.viewFiveHundredSas",
-            "key": "ctrl+f6"
-        },
-        {
-          "command": "RemoteTools.viewAllSas",
-          "key": "ctrl+f7"
-        },
-        {
-          "command": "RemoteTools.queryBigQuery",
-          "key": "ctrl+f8"
-        }
+      {
+        "command": "RemoteTools.executeSasCode",
+        "key": "ctrl+f5"
+      },
+      {
+        "command": "RemoteTools.viewFiveHundredSas",
+        "key": "ctrl+f6"
+      },
+      {
+        "command": "RemoteTools.viewAllSas",
+        "key": "ctrl+f7"
+      },
+      {
+        "command": "RemoteTools.queryBigQuery",
+        "key": "ctrl+f8"
+      }
     ],
     "configuration": {
       "title": "RemoteTools",
