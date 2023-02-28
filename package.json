@@ -9,24 +9,29 @@
   "categories": [
     "Other"
   ],
+  "publisher": "clarkeni",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/nicholasgodfreyclarke/remote-tools.git"
+  },
   "main": "./out/extension.js",
   "contributes": {
     "commands": [
       {
         "command": "RemoteTools.executeSasCode",
-        "title": "Remote Executer: Execute Sas Code"
+        "title": "Remote Tools: Execute Sas Code"
       },
       {
         "command": "RemoteTools.viewFiveHundredSas",
-        "title": "Remote Executer: View 500 rows SAS"
+        "title": "Remote Tools: View 500 rows SAS"
       },
       {
         "command": "RemoteTools.viewAllSas",
-        "title": "Remote Executer: View all rows SAS"
+        "title": "Remote Tools: View all rows SAS"
       },
       {
         "command": "RemoteTools.queryBigQuery",
-        "title": "Remote Executer: Query Big Query"
+        "title": "Remote Tools: Query Big Query"
       }
     ],
     "keybindings": [
