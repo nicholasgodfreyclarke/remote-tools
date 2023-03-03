@@ -14,7 +14,7 @@ export async function activate(context: vscode.ExtensionContext) {
   const debugChannel = vscode.window.createOutputChannel("RemoteToolsDebug");
 
   const csvToExcel = new CsvToExcel(vbsScriptPath);
-  const remoteSAS = new RemoteSAS("RemoteTools", csvToExcel, debugChannel);
+  const remoteSAS = new RemoteSAS("RemoteSAS", csvToExcel, debugChannel);
   const remoteBigQuery = new RemoteBigQuery(csvToExcel, debugChannel);
 
   let disposableExecuteSasCode = vscode.commands.registerCommand(
