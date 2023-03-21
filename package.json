@@ -75,6 +75,11 @@
           "type": "boolean",
           "default": false,
           "description": "-noterminal stops SAS from attempting to connect to the X server with using proc export.\n However, there is a side effect in that if there is an error in a data proc it is unable to recover until SAS is restarted."
+        },
+        "RemoteSAS.additionalArgs": {
+            "type": "string",
+            "default": "",
+            "description": "Additional command line args to pass to SAS"
         }
       }
     }

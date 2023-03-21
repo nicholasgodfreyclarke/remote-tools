@@ -41,6 +41,7 @@ interface Config {
   username: string;
   password: string;
   noterminal: boolean;
+  additionalArgs: string;
 }
 
 export class RemoteSAS {
@@ -90,6 +91,7 @@ export class RemoteSAS {
       username: config.get("username"),
       password: config.get("password"),
       noterminal: config.get("noterminal"),
+      additionalArgs: config.get("additionalArgs"),
     };
   }
 
@@ -115,6 +117,9 @@ export class RemoteSAS {
     let conn = new Client();
 
     this.showMessage("initializing connection", "information");
+
+    // Reset workpath on new connections
+    this.workpath = null;
 
     conn
       .on("ready", () => {
@@ -152,10 +157,13 @@ export class RemoteSAS {
           // b) Stops SAS from printing ***INTERNAL_USE_WORKPATH*** and the workpath on different lines - makes my job easier
           // stream.stdin.write('sas -nodms -LINESIZE MAX\n');
 
+          let additionalArgs = this.getConfiguration().additionalArgs;
           if (this.getConfiguration().noterminal) {
-            stream.stdin.write("sas -nodms -LINESIZE MAX\n");
+            stream.stdin.write(`sas -nodms -LINESIZE MAX ${additionalArgs} \n`);
           } else {
-            stream.stdin.write("sas -nodms -noterminal -LINESIZE MAX\n");
+            stream.stdin.write(
+              `sas -nodms -noterminal -LINESIZE MAX ${additionalArgs} \n`
+            );
           }
         });
       })
@@ -300,12 +308,18 @@ export class RemoteSAS {
       [lib, datasetName] = splitSelection;
 
       if (re.exec(lib) === null) {
-        this.showMessage(`Not a valid library name: ${selection}`, "information");
-        
+        this.showMessage(
+          `Not a valid library name: ${selection}`,
+          "information"
+        );
+
         return;
       }
       if (re.exec(datasetName) === null) {
-        this.showMessage(`Not a valid dataset name: ${selection}`, "information");
+        this.showMessage(
+          `Not a valid dataset name: ${selection}`,
+          "information"
+        );
         return;
       }
     }
